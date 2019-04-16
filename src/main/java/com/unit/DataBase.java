@@ -5,7 +5,7 @@ public class DataBase {
     private  String url = "jdbc:mysql://localhost/mobilebank?serverTimezone=Europe/Samara&useSSL=false";
     private  String username = "root";
     private  String password = "123456";
-    private  Connection connection = null;
+    private  static Connection connection = null;
     private  String sqlCommand = "";
     private   Statement statement;
     private static DataBase Base;
@@ -29,15 +29,16 @@ public class DataBase {
     }
     public static void closeConnection() {
         if (connection == null) {
-            errorHandler("No connection found", null);
+            System.out.println("No connection");
         }
         else {
             try {
                 connection.close();
                 connection = null;
+                System.out.println("Close connection");
             }
             catch (SQLException e) {
-                errorHandler("Failed to close the connection", e);
+                System.out.println("Failed to close the connection");
             }
         }
     }

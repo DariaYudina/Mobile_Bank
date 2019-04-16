@@ -22,8 +22,12 @@ public class Main {
 
         boolean menu=true;
         while(menu){
-            System.out.println("menu...");
-            menu = false;
+            System.out.println("1. Показать всё \n2. Добавить запись \n3. Найти запись \n4. Удалить запись \n5. Выйти \n");
+            int choice = 3;
+            switch (choice){
+                case 3: menu = false;System.out.println("Выбрано выйти"); break;
+            }
+
        }
     }
 }
