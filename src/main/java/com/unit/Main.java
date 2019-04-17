@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-       DataBase.getInstance();
+        DBconnection.getInstance();
        /*
        try{
            ResultSet resultSet = DataBase.getInstance().query("SELECT * FROM Users");
@@ -43,16 +43,15 @@ public class Main {
                 }
             }
             switch (choice){
-                case 1: System.out.println("вы ничего не выбрали"); menu = false;break;
-                case 2: System.out.println("вы ничего не выбрали"); menu = false;break;
-                case 3: System.out.println("вы ничего не выбрали"); menu = false;break;
-                case 4: System.out.println("вы ничего не выбрали"); menu = false;break;
-                case 5: menu = false; System.out.println("Выбрано выйти"); break;
+                case 1: System.out.println("вы  выбрали 1"); menu = false; break;
+                case 2: System.out.println("вы  выбрали 2"); menu = false; break;
+                case 3: System.out.println("вы  выбрали 3"); menu = false; break;
+                case 4: System.out.println("вы  выбрали 5"); menu = false; break;
+                case 5: System.out.println("Выбрано выйти"); menu = false; break;
                 default:
                     System.out.println("Выберите существующий пункт меню");
                     break;
             }
-
        }
 
     }
