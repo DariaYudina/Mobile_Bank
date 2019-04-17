@@ -27,15 +27,16 @@ public class Main {
             }
             //-----
             switch (choice){
-                case 1: System.out.println("вы  выбрали 1");
+                case 1:
                     boolean menu2 = true;
                     Scanner in2 = new Scanner(System.in);
                     while(menu2){
-                        int test = 1;
                         int choice2 = -1;
                         //валидация---
                         while (true)
                         {
+                            System.out.println("В базе данных мобильного банка 3 таблицы, выберите какую показать:");
+                            System.out.println("1. Users \n2. Accounts \n3. Authorities \n4. Выйти ");
                             System.out.println("Выберите пункт меню:");
                             String line2 = in2.nextLine();
                             try
@@ -50,7 +51,10 @@ public class Main {
                         }
                         //-----
                         switch (choice2){
-                            case 1: System.out.println("Вы выбрали выйти"); menu2 = false; break;
+                            case 1: System.out.println("Вы выбрали 1"); break;
+                            case 2: System.out.println("Вы выбрали 2"); break;
+                            case 3: System.out.println("Вы выбрали 3"); break;
+                            case 4: System.out.println("Вы выбрали выйти"); menu2 = false; break;
                             default:
                                 System.out.println("Выберите существующий пункт меню");
                                 break;
