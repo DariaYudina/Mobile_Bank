@@ -10,6 +10,7 @@ public class Main {
         while(menu){
             System.out.println("1. Показать всё \n2. Добавить запись \n3. Найти запись \n4. Удалить запись \n5. Выйти ");
             int choice = -1;
+            //валидация---
             while (true)
             {
                 System.out.println("Выберите пункт меню:");
@@ -24,9 +25,37 @@ public class Main {
                     System.out.println("Вы ввели не число");
                 }
             }
+            //-----
             switch (choice){
                 case 1: System.out.println("вы  выбрали 1");
-
+                    boolean menu2 = true;
+                    Scanner in2 = new Scanner(System.in);
+                    while(menu2){
+                        int test = 1;
+                        int choice2 = -1;
+                        //валидация---
+                        while (true)
+                        {
+                            System.out.println("Выберите пункт меню:");
+                            String line2 = in2.nextLine();
+                            try
+                            {
+                                choice2 = Integer.parseInt(line2);
+                                break;
+                            }
+                            catch (NumberFormatException e)
+                            {
+                                System.out.println("Вы ввели не число");
+                            }
+                        }
+                        //-----
+                        switch (choice2){
+                            case 1: System.out.println("Вы выбрали выйти"); menu2 = false; break;
+                            default:
+                                System.out.println("Выберите существующий пункт меню");
+                                break;
+                        }
+                    }
                     break;
                 case 2: System.out.println("вы  выбрали 2"); break;
                 case 3: System.out.println("вы  выбрали 3"); break;
