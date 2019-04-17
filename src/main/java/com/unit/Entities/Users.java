@@ -2,105 +2,68 @@ package com.unit.Entities;
 import java.util.ArrayList;
 import java.util.List;
 public class Users {
+    private String username ;
+    private String password ;
+    private String email ;
+    private String phone ;
+    private List<Users> users = new ArrayList<>();
 
-    private int id;
-    private String model;
-    private String dataV;
-    private String color;
-    private int probeg;
-    private int price;
-    private List<Users> autos = new ArrayList<>();
-
-    public Users(int id, String model, String dataV, String color, int probeg, int price) {
-        this.id = id;
-        this.model = model;
-        this.dataV = dataV;
-        this.color = color;
-        this.probeg = probeg;
-        this.price = price;
-    }
-//
-//public Entities.Auto(int id, String model, String dataV, String color, int probeg, int price){
-//        this(0,"model","Дата выпуска","Цвет",0,0);
-//}
-
-    public Users(){
-
+    public Users(String username, String password , String email, String phone) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.phone = phone;
     }
 
-
-
-    public int getId() {
-        return id;
+    public String getUsername() {
+        return username;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String getPassword() {
+        return password;
     }
 
-    public String getModel() {
-        return model;
+    public String getEmail() {
+        return email;
     }
 
-    public void setModel(String model) {
-        this.model = model;
+    public String getPhone() {
+        return phone;
     }
 
-    public String getDataV() {
-        return dataV;
+    public List<Users> getUsers() {
+        return users;
     }
 
-    public void setDataV(String dataV) {
-        this.dataV = dataV;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getColor() {
-        return color;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public int getProbeg() {
-        return probeg;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public void setProbeg(int probeg) {
-        this.probeg = probeg;
+    public void setUsers(List<Users> users) {
+        this.users = users;
     }
-
-    public int getPrice() {
-        return price;
+    public void addUsers(Users u){
+        users.add(u);
     }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public List<Users> getAutos() {
-        return autos;
-    }
-
-    public void setAutos(List<Users> books) {
-        this.autos = autos;
-    }
-
-
-    public void addBook(Users a) {
-        autos.add(a);
-    }
-
-
     @Override
     public String toString() {
         return "Пользователи{" +
-                "id=" + id +
-                ", Модель='" + model + '\'' +
-                ", Дата выпуска='" + dataV + '\'' +
-                ", Цвет='" + color + '\'' +
-                ", Пробег=" + probeg +
-                ", Цена=" + price +
+                "username=" + username +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
                 '}';
     }
 
