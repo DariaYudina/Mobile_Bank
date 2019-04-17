@@ -1,6 +1,10 @@
 package com.unit;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import com.unit.Entities.*;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -51,7 +55,10 @@ public class Main {
                         }
                         //-----
                         switch (choice2){
-                            case 1: System.out.println("Вы выбрали 1"); break;
+                            case 1:
+                                List<Users> users= new ArrayList<>();
+
+                                break;
                             case 2: System.out.println("Вы выбрали 2"); break;
                             case 3: System.out.println("Вы выбрали 3"); break;
                             case 4: System.out.println("Вы выбрали выйти"); menu2 = false; break;
@@ -81,11 +88,10 @@ public class Main {
            while(resultSet.next()){
 
                String usernames = resultSet.getString("username");
+               String passwords = resultSet.getString("password");
                String emails = resultSet.getString("email");
                String phones = resultSet.getString("phone");
-               //int price = resultSet.getInt("Price");
-
-               System.out.printf("Name: %s; email: %s; phone: %s\n",usernames, emails, phones);
+               System.out.printf("name: %s; password: %s; email: %s; phone: %s\n",usernames, passwords, emails, phones);
            }
        }
        catch (Exception ex){
