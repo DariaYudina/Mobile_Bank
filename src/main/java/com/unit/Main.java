@@ -1,9 +1,11 @@
 package com.unit;
 import java.sql.*;
+import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
        DataBase.getInstance();
+       /*
        try{
            ResultSet resultSet = DataBase.getInstance().query("SELECT * FROM Users");
            while(resultSet.next()){
@@ -12,23 +14,47 @@ public class Main {
                String emails = resultSet.getString("email");
                String phones = resultSet.getString("phone");
                //int price = resultSet.getInt("Price");
-               System.out.printf("Name: "+ usernames + "| email: "+ emails + "| phone: "+ phones + " "+"\n");
+
+               System.out.printf("Name: %s; email: %s; phone: %s\n",usernames, emails, phones);
            }
        }
        catch (Exception ex){
            System.out.println("query failed...");
            System.out.println(ex);
        }
-
-        boolean menu=true;
+      */
+        boolean menu = true;
+        Scanner in = new Scanner(System.in);
         while(menu){
-            System.out.println("1. Показать всё \n2. Добавить запись \n3. Найти запись \n4. Удалить запись \n5. Выйти \n");
-            int choice = 3;
+            System.out.println("1. Показать всё \n2. Добавить запись \n3. Найти запись \n4. Удалить запись \n5. Выйти ");
+            int choice = -1;
+            while (true)
+            {
+                System.out.println("Выберите пункт меню:");
+                String line = in.nextLine();
+                try
+                {
+                    choice = Integer.parseInt(line);
+                        break;
+                }
+                catch (NumberFormatException e)
+                {
+                    System.out.println("Вы ввели не число");
+                }
+            }
             switch (choice){
-                case 3: menu = false;System.out.println("Выбрано выйти"); break;
+                case 1: System.out.println("вы ничего не выбрали"); menu = false;break;
+                case 2: System.out.println("вы ничего не выбрали"); menu = false;break;
+                case 3: System.out.println("вы ничего не выбрали"); menu = false;break;
+                case 4: System.out.println("вы ничего не выбрали"); menu = false;break;
+                case 5: menu = false; System.out.println("Выбрано выйти"); break;
+                default:
+                    System.out.println("Выберите существующий пункт меню");
+                    break;
             }
 
        }
+
     }
 }
 
