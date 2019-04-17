@@ -59,11 +59,11 @@ public class Users {
     }
     @Override
     public String toString() {
-        return "Пользователи{" +
-                "username=" + username +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
+        return "{" +
+                "username = " + username +
+                ", password = '" + password + '\'' +
+                ", email = '" + email + '\'' +
+                ", phone = '" + phone + '\'' +
                 '}';
     }
 

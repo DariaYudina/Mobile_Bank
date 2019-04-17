@@ -56,8 +56,12 @@ public class Main {
                         //-----
                         switch (choice2){
                             case 1:
-                                List<Users> users= new ArrayList<>();
-
+                                List<Users> users = DBconnection.getInstance().getUsers();
+                                System.out.println("Таблица Пользователи:\n");
+                                for (Users item : users) {
+                                    System.out.println(item);
+                                    System.out.println();
+                                }
                                 break;
                             case 2: System.out.println("Вы выбрали 2"); break;
                             case 3: System.out.println("Вы выбрали 3"); break;

@@ -1,6 +1,8 @@
 package com.unit;
-
+import com.unit.Entities.*;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DBconnection {
         private  String url = "jdbc:mysql://localhost/mobilebank?serverTimezone=Europe/Samara&useSSL=false";
@@ -55,6 +57,28 @@ public class DBconnection {
             statement = Base.connection.createStatement();
             ResultSet res = statement.executeQuery(query);
             return res;
+        }
+        public List<Users> getUsers(){
+            if (connection == null) return null;
+            try {
+                List<Users> users = new ArrayList<>();
+                Statement statement = connection.createStatement();
+                ResultSet rs = statement.executeQuery("select  username, password, email, phone from Users");
+                while (rs.next()) {
+                    String usernames = rs.getString("username");
+                    String passwords = rs.getString("password");
+                    String emails = rs.getString("email");
+                    String phones = rs.getString("phone");
+                    users.add(new Users(usernames, passwords , emails, phones));
+                }
+                rs.close();
+                statement.close();
+                return users;
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            return null;
         }
 }
 
