@@ -80,6 +80,49 @@ public class DBconnection {
             }
             return null;
         }
+    public List<Account> getAccount(){
+        if (connection == null) return null;
+        try {
+            List<Account> accounts = new ArrayList<>();
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("select  username, code, accountNumber, amount from Accounts");
+            while (rs.next()) {
+                String usernames = rs.getString("username");
+                String code = rs.getString("code");
+                Integer accountNumber = rs.getInt("accountNumber");
+                Double amount = rs.getDouble("amount");
+                accounts.add(new Account(usernames, code , accountNumber, amount));
+            }
+            rs.close();
+            statement.close();
+            return accounts;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public List<Authoritie> getAuthorities(){
+        if (connection == null) return null;
+        try {
+            List<Authoritie> authorities = new ArrayList<>();
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("select  username, authority from autho");
+            while (rs.next()) {
+                String usernames = rs.getString("username");
+                String authority = rs.getString("authority");
+                authorities.add(new Authoritie(usernames, authority));
+            }
+            rs.close();
+            statement.close();
+            return authorities;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
 
 

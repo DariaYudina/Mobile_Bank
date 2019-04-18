@@ -6,7 +6,6 @@ public class Users {
     private String password ;
     private String email ;
     private String phone ;
-    private List<Users> users = new ArrayList<>();
 
     public Users(String username, String password , String email, String phone) {
         this.username = username;
@@ -31,10 +30,6 @@ public class Users {
         return phone;
     }
 
-    public List<Users> getUsers() {
-        return users;
-    }
-
     public void setUsername(String username) {
         this.username = username;
     }
@@ -51,12 +46,6 @@ public class Users {
         this.phone = phone;
     }
 
-    public void setUsers(List<Users> users) {
-        this.users = users;
-    }
-    public void addUsers(Users u){
-        users.add(u);
-    }
     @Override
     public String toString() {
         return "{" +

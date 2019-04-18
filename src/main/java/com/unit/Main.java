@@ -9,6 +9,7 @@ public class Main {
 
     public static void main(String[] args) {
         DBconnection.getInstance();
+
         boolean menu = true;
         Scanner in = new Scanner(System.in);
         while(menu){
@@ -40,7 +41,7 @@ public class Main {
                         while (true)
                         {
                             System.out.println("В базе данных мобильного банка 3 таблицы, выберите какую показать:");
-                            System.out.println("1. Users \n2. Accounts \n3. Authorities \n4. Выйти ");
+                            System.out.println("1. Users \n2. Account \n3. Authorities \n4. Выйти ");
                             System.out.println("Выберите пункт меню:");
                             String line2 = in2.nextLine();
                             try
@@ -63,8 +64,22 @@ public class Main {
                                     System.out.println();
                                 }
                                 break;
-                            case 2: System.out.println("Вы выбрали 2"); break;
-                            case 3: System.out.println("Вы выбрали 3"); break;
+                            case 2:
+                                List<Account> accounts = DBconnection.getInstance().getAccount();
+                                System.out.println("Таблица Аккаунты:\n");
+                                for (Account item : accounts) {
+                                    System.out.println(item);
+                                    System.out.println();
+                                }
+                                break;
+                            case 3:
+                                List<Authoritie> authorities = DBconnection.getInstance().getAuthorities();
+                                System.out.println("Таблица Авторизации:\n");
+                                for (Authoritie item : authorities) {
+                                    System.out.println(item);
+                                    System.out.println();
+                                }
+                                break;
                             case 4: System.out.println("Вы выбрали выйти"); menu2 = false; break;
                             default:
                                 System.out.println("Выберите существующий пункт меню");
