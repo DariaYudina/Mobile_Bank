@@ -87,10 +87,137 @@ public class Main {
                         }
                     }
                     break;
-                case 2: System.out.println("вы  выбрали 2"); break;
-                case 3: System.out.println("вы  выбрали 3"); break;
-                case 4: System.out.println("вы  выбрали 5"); break;
-                case 5: System.out.println("Выбрано выйти"); menu = false; break;
+                case 2:
+                        boolean menu3 = true;
+                        Scanner in3 = new Scanner(System.in);
+                        while(menu3){
+                        int choice2 = -1;
+                            //валидация---
+                            while (true)
+                            {
+                                System.out.println("В базе данных мобильного банка 3 таблицы, выберите в какую добавить запись:");
+                                System.out.println("1. Users \n2. Account \n3. Authorities \n4. Выйти ");
+                                System.out.println("Выберите пункт меню:");
+                                String line2 = in3.nextLine();
+                                try
+                                {
+                                    choice2 = Integer.parseInt(line2);
+                                    break;
+                                }
+                                catch (NumberFormatException e)
+                                {
+                                    System.out.println("Вы ввели не число");
+                                }
+                            }
+                            //-----
+                            switch (choice2){
+                                case 1:
+
+                                    System.out.println("Таблица Пользователи:\n");
+
+                                    break;
+                                case 2:
+                                    System.out.println("Таблица Аккаунты:\n");
+
+                                    break;
+                                case 3:
+                                    System.out.println("Таблица Авторизации:\n");
+                                    break;
+                                case 4: System.out.println("Вы выбрали выйти"); menu3 = false; break;
+                                default:
+                                    System.out.println("Выберите существующий пункт меню");
+                                    break;
+                            }
+                        }
+                    break;
+                case 3:
+                    boolean menu4 = true;
+                    Scanner in4 = new Scanner(System.in);
+                    while(menu4){
+                        int choice2 = -1;
+                        //валидация---
+                        while (true)
+                        {
+                            System.out.println("В базе данных мобильного банка 3 таблицы, выберите в какой найти запись:");
+                            System.out.println("1. Users \n2. Account \n3. Authorities \n4. Выйти ");
+                            System.out.println("Выберите пункт меню:");
+                            String line2 = in4.nextLine();
+                            try
+                            {
+                                choice2 = Integer.parseInt(line2);
+                                break;
+                            }
+                            catch (NumberFormatException e)
+                            {
+                                System.out.println("Вы ввели не число");
+                            }
+                        }
+                        //-----
+                        switch (choice2){
+                            case 1:
+
+                                System.out.println("Таблица Пользователи:\n");
+
+                                break;
+                            case 2:
+                                System.out.println("Таблица Аккаунты:\n");
+
+                                break;
+                            case 3:
+                                System.out.println("Таблица Авторизации:\n");
+                                break;
+                            case 4: System.out.println("Вы выбрали выйти"); menu4 = false; break;
+                            default:
+                                System.out.println("Выберите существующий пункт меню");
+                                break;
+                        }
+                    }
+
+                break;
+                case 4:
+                    boolean menu5 = true;
+                    Scanner in5 = new Scanner(System.in);
+                    while(menu5){
+                        int choice2 = -1;
+                        //валидация---
+                        while (true)
+                        {
+                            System.out.println("В базе данных мобильного банка 3 таблицы, выберите в какой удалить запись:");
+                            System.out.println("1. Users \n2. Account \n3. Authorities \n4. Выйти ");
+                            System.out.println("Выберите пункт меню:");
+                            String line2 = in5.nextLine();
+                            try
+                            {
+                                choice2 = Integer.parseInt(line2);
+                                break;
+                            }
+                            catch (NumberFormatException e)
+                            {
+                                System.out.println("Вы ввели не число");
+                            }
+                        }
+                        //-----
+                        switch (choice2){
+                            case 1:
+
+                                System.out.println("Таблица Пользователи:\n");
+
+                                break;
+                            case 2:
+                                System.out.println("Таблица Аккаунты:\n");
+
+                                break;
+                            case 3:
+                                System.out.println("Таблица Авторизации:\n");
+                                break;
+                            case 4: System.out.println("Вы выбрали выйти"); menu5 = false; break;
+                            default:
+                                System.out.println("Выберите существующий пункт меню");
+                                break;
+                        }
+                    }
+                    break;
+                case 5: System.out.println("Вы выбрали выйти"); menu = false; break;
                 default:
                     System.out.println("Выберите существующий пункт меню");
                     break;
