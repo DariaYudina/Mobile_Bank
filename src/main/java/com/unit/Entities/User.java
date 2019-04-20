@@ -1,13 +1,13 @@
 package com.unit.Entities;
 import java.util.ArrayList;
 import java.util.List;
-public class Users {
+public class User {
     private String username ;
     private String password ;
     private String email ;
     private String phone ;
 
-    public Users(String username, String password , String email, String phone) {
+    public User(String username, String password , String email, String phone) {
         this.username = username;
         this.password = password;
         this.email = email;

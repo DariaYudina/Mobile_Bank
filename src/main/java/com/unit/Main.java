@@ -1,6 +1,4 @@
 package com.unit;
-import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import com.unit.Entities.*;
@@ -41,7 +39,7 @@ public class Main {
                         while (true)
                         {
                             System.out.println("В базе данных мобильного банка 3 таблицы, выберите какую показать:");
-                            System.out.println("1. Users \n2. Account \n3. Authorities \n4. Выйти ");
+                            System.out.println("1. User \n2. Account \n3. Authorities \n4. Выйти ");
                             System.out.println("Выберите пункт меню:");
                             String line2 = in2.nextLine();
                             try
@@ -57,9 +55,9 @@ public class Main {
                         //-----
                         switch (choice2){
                             case 1:
-                                List<Users> users = DBconnection.getInstance().getUsers();
+                                List<User> users = DBconnection.getInstance().getUsers();
                                 System.out.println("Таблица Пользователи:\n");
-                                for (Users item : users) {
+                                for (User item : users) {
                                     System.out.println(item);
                                     System.out.println();
                                 }
@@ -96,7 +94,7 @@ public class Main {
                             while (true)
                             {
                                 System.out.println("В базе данных мобильного банка 3 таблицы, выберите в какую добавить запись:");
-                                System.out.println("1. Users \n2. Account \n3. Authorities \n4. Выйти ");
+                                System.out.println("1. User \n2. Account \n3. Authorities \n4. Выйти ");
                                 System.out.println("Выберите пункт меню:");
                                 String line2 = in3.nextLine();
                                 try
@@ -112,16 +110,32 @@ public class Main {
                             //-----
                             switch (choice2){
                                 case 1:
-
-                                    System.out.println("Таблица Пользователи:\n");
-
+                                    Scanner in6 = new Scanner(System.in);
+                                    String usernames = in6.nextLine();
+                                    String passwords = in6.nextLine();
+                                    String emails = in6.nextLine();
+                                    String phones = in6.nextLine();
+                                    User u = new User(usernames, passwords, emails, phones);
+                                    int i = DBconnection.getInstance().setUser(u);
+                                    System.out.println("Пользователей добавлено: "+ i);
                                     break;
                                 case 2:
-                                    System.out.println("Таблица Аккаунты:\n");
-
+                                    Scanner in7 = new Scanner(System.in);
+                                    String usernames1 = in7.nextLine();
+                                    String code = in7.nextLine();
+                                    Integer accountNumber = in7.nextInt();
+                                    Double amount = in7.nextDouble();
+                                    Account a = new Account(usernames1, code, accountNumber, amount);
+                                    int i2 = DBconnection.getInstance().setAccount(a);
+                                    System.out.println("Аккаунтов добавлено:"+ i2);
                                     break;
                                 case 3:
-                                    System.out.println("Таблица Авторизации:\n");
+                                    Scanner in8 = new Scanner(System.in);
+                                    String usernames2 = in8.nextLine();
+                                    String autirity = in8.nextLine();
+                                    Authoritie au = new Authoritie(usernames2,autirity);
+                                    int i3 = DBconnection.getInstance().setAuthoritie(au);
+                                    System.out.println("Авторизаций добавлено: "+ i3);
                                     break;
                                 case 4: System.out.println("Вы выбрали выйти"); menu3 = false; break;
                                 default:
@@ -139,7 +153,7 @@ public class Main {
                         while (true)
                         {
                             System.out.println("В базе данных мобильного банка 3 таблицы, выберите в какой найти запись:");
-                            System.out.println("1. Users \n2. Account \n3. Authorities \n4. Выйти ");
+                            System.out.println("1. User \n2. Account \n3. Authorities \n4. Выйти ");
                             System.out.println("Выберите пункт меню:");
                             String line2 = in4.nextLine();
                             try
@@ -172,7 +186,6 @@ public class Main {
                                 break;
                         }
                     }
-
                 break;
                 case 4:
                     boolean menu5 = true;
@@ -183,7 +196,7 @@ public class Main {
                         while (true)
                         {
                             System.out.println("В базе данных мобильного банка 3 таблицы, выберите в какой удалить запись:");
-                            System.out.println("1. Users \n2. Account \n3. Authorities \n4. Выйти ");
+                            System.out.println("1. User \n2. Account \n3. Authorities \n4. Выйти ");
                             System.out.println("Выберите пункт меню:");
                             String line2 = in5.nextLine();
                             try
@@ -230,7 +243,7 @@ public class Main {
 
        /*
        try{
-           ResultSet resultSet = DataBase.getInstance().query("SELECT * FROM Users");
+           ResultSet resultSet = DataBase.getInstance().query("SELECT * FROM User");
            while(resultSet.next()){
 
                String usernames = resultSet.getString("username");

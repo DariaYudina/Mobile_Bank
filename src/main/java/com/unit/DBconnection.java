@@ -1,10 +1,12 @@
 package com.unit;
 import com.unit.Entities.*;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DBconnection {
+
         private  String url = "jdbc:mysql://localhost/mobilebank?serverTimezone=Europe/Samara&useSSL=false";
         private  String username = "root";
         private  String password = "123456";
@@ -58,18 +60,18 @@ public class DBconnection {
             ResultSet res = statement.executeQuery(query);
             return res;
         }
-        public List<Users> getUsers(){
+        public List<User> getUsers(){
             if (connection == null) return null;
             try {
-                List<Users> users = new ArrayList<>();
+                List<User> users = new ArrayList<>();
                 Statement statement = connection.createStatement();
-                ResultSet rs = statement.executeQuery("select  username, password, email, phone from Users");
+                ResultSet rs = statement.executeQuery("select  username, password, email, phone from User");
                 while (rs.next()) {
                     String usernames = rs.getString("username");
                     String passwords = rs.getString("password");
                     String emails = rs.getString("email");
                     String phones = rs.getString("phone");
-                    users.add(new Users(usernames, passwords , emails, phones));
+                    users.add(new User(usernames, passwords , emails, phones));
                 }
                 rs.close();
                 statement.close();
@@ -102,7 +104,6 @@ public class DBconnection {
         }
         return null;
     }
-
     public List<Authoritie> getAuthorities(){
         if (connection == null) return null;
         try {
@@ -122,6 +123,58 @@ public class DBconnection {
             e.printStackTrace();
         }
         return null;
+    }
+    public int setUser(User u){
+        if (connection == null) return 0;
+        try{
+            String sql = "INSERT Users(username, password, email, phone) VALUES (?, ?, ?, ?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, u.getUsername());
+            preparedStatement.setString(2, u.getPassword());
+            preparedStatement.setString(3, u.getEmail());
+            preparedStatement.setString(4, u.getPhone());
+            int rows = preparedStatement.executeUpdate();
+            preparedStatement.close();
+            return rows;
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return 0;
+    }
+    public int setAccount(Account u){
+        if (connection == null) return 0;
+        try{
+            String sql = "INSERT Accounts(username, code, accountNumber, amount) VALUES (?, ?, ?, ?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, u.getUsername());
+            preparedStatement.setString(2, u.getCode());
+            preparedStatement.setInt(3, u.getAccountNumber());
+            preparedStatement.setDouble(4, u.getAmount());
+            int rows = preparedStatement.executeUpdate();
+            preparedStatement.close();
+            return rows;
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return 0;
+    }
+    public int setAuthoritie(Authoritie u){
+        if (connection == null) return 0;
+        try{
+            String sql = "INSERT Autho(username, authority) VALUES (?, ?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, u.getUsername());
+            preparedStatement.setString(2, u.getAuthority());
+            int rows = preparedStatement.executeUpdate();
+            preparedStatement.close();
+            return rows;
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return 0;
     }
 }
 
