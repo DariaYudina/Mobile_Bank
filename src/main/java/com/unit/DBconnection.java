@@ -176,10 +176,42 @@ public class DBconnection {
         }
         return 0;
     }
+
     public int deleteUser(String username){
         if (connection == null) return 0;
         try{
             String sql = "DELETE FROM Users WHERE UserName = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, username);
+            int rows = preparedStatement.executeUpdate();
+            preparedStatement.close();
+            return rows;
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public int deleteAccount(String username){
+        if (connection == null) return 0;
+        try{
+            String sql = "DELETE FROM Accounts WHERE username = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, username);
+            int rows = preparedStatement.executeUpdate();
+            preparedStatement.close();
+            return rows;
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return 0;
+    }
+    public int deleteAuthoritie(String username){
+        if (connection == null) return 0;
+        try{
+            String sql = "DELETE FROM Autho WHERE username = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, username);
             int rows = preparedStatement.executeUpdate();
@@ -196,6 +228,42 @@ public class DBconnection {
         boolean isUserExists = false;
         try{
             String sql = "SELECT 1 FROM Users WHERE UserName = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, username);
+            try (ResultSet rs = preparedStatement.executeQuery()) {
+                if (rs.next()) {
+                    isUserExists = true;
+                    return isUserExists ;}
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return false;
+    }
+    public boolean searchAccount(String username){
+        if (connection == null) return false;
+        boolean isUserExists = false;
+        try{
+            String sql = "SELECT 1 FROM Accounts WHERE Username = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, username);
+            try (ResultSet rs = preparedStatement.executeQuery()) {
+                if (rs.next()) {
+                    isUserExists = true;
+                    return isUserExists ;}
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return false;
+    }
+    public boolean searchAuthoritie(String username){
+        if (connection == null) return false;
+        boolean isUserExists = false;
+        try{
+            String sql = "SELECT 1 FROM autho WHERE Username = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, username);
             try (ResultSet rs = preparedStatement.executeQuery()) {

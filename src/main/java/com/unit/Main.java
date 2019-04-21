@@ -178,11 +178,20 @@ public class Main {
 
                                 break;
                             case 2:
-                                System.out.println("Таблица Аккаунты:\n");
-
+                                System.out.println("Вы выбрали таблицу Аккаунты: введите username искомого поля таблицы\n");
+                                Scanner in10 = new Scanner(System.in);
+                                String account = in10.nextLine();
+                                boolean res5 = DBconnection.getInstance().searchAccount(account);
+                                if(res5) System.out.println("Такое поле есть в таблице");
+                                else System.out.println("Не найдено");
                                 break;
                             case 3:
-                                System.out.println("Таблица Авторизации:\n");
+                                System.out.println("Вы выбрали таблицу Аккаунты: введите username искомого поля таблицы\n");
+                                Scanner in11 = new Scanner(System.in);
+                                String autho = in11.nextLine();
+                                boolean res6 = DBconnection.getInstance().searchAuthoritie(autho);
+                                if(res6) System.out.println("Такое поле есть в таблице");
+                                else System.out.println("Не найдено");
                                 break;
                             case 4: System.out.println("Вы выбрали выйти"); menu4 = false; break;
                             default:
@@ -220,14 +229,21 @@ public class Main {
                                 Scanner in8 = new Scanner(System.in);
                                 String usernames = in8.nextLine();
                                 int res3 = DBconnection.getInstance().deleteUser(usernames);
-                                System.out.println(res3);
+                                System.out.println(res3 + " Удалено");
                                 break;
                             case 2:
                                 System.out.println("Вы выбрали таблицу Аккаунты: введите username удаяемого поля таблицы\n");
-
+                                Scanner in12 = new Scanner(System.in);
+                                String account2 = in12.nextLine();
+                                int res4 = DBconnection.getInstance().deleteAccount(account2);
+                                System.out.println(res4 + " Удалено");
                                 break;
                             case 3:
                                 System.out.println("Вы выбрали таблицу Авторизации: введите username удаяемого поля таблицы\n");
+                                Scanner in13 = new Scanner(System.in);
+                                String autho2 = in13.nextLine();
+                                int res5 = DBconnection.getInstance().deleteAuthoritie(autho2);
+                                System.out.println(res5 + " Удалено");
                                 break;
                             case 4: System.out.println("Вы выбрали выйти"); menu5 = false; break;
                             default:
@@ -247,20 +263,3 @@ public class Main {
 }
 
 
-       /*
-       try{
-           ResultSet resultSet = DataBase.getInstance().query("SELECT * FROM User");
-           while(resultSet.next()){
-
-               String usernames = resultSet.getString("username");
-               String passwords = resultSet.getString("password");
-               String emails = resultSet.getString("email");
-               String phones = resultSet.getString("phone");
-               System.out.printf("name: %s; password: %s; email: %s; phone: %s\n",usernames, passwords, emails, phones);
-           }
-       }
-       catch (Exception ex){
-           System.out.println("query failed...");
-           System.out.println(ex);
-       }
-      */
