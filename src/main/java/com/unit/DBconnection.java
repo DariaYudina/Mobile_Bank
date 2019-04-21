@@ -65,7 +65,7 @@ public class DBconnection {
             try {
                 List<User> users = new ArrayList<>();
                 Statement statement = connection.createStatement();
-                ResultSet rs = statement.executeQuery("select  username, password, email, phone from User");
+                ResultSet rs = statement.executeQuery("select  username, password, email, phone from Users");
                 while (rs.next()) {
                     String usernames = rs.getString("username");
                     String passwords = rs.getString("password");
@@ -176,7 +176,39 @@ public class DBconnection {
         }
         return 0;
     }
+    public int deleteUser(String username){
+        if (connection == null) return 0;
+        try{
+            String sql = "DELETE FROM Users WHERE UserName = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, username);
+            int rows = preparedStatement.executeUpdate();
+            preparedStatement.close();
+            return rows;
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return 0;
+    }
+    public boolean searchUser(String username){
+        if (connection == null) return false;
+        boolean isUserExists = false;
+        try{
+            String sql = "SELECT 1 FROM Users WHERE UserName = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, username);
+            try (ResultSet rs = preparedStatement.executeQuery()) {
+                if (rs.next()) {
+                    isUserExists = true;
+                    return isUserExists ;}
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return false;
+    }
 }
 
-
-
+// int rows = statement.executeUpdate("DELETE FROM Products WHERE Id = 3");

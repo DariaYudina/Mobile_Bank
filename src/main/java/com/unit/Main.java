@@ -169,8 +169,12 @@ public class Main {
                         //-----
                         switch (choice2){
                             case 1:
-
-                                System.out.println("Таблица Пользователи:\n");
+                                System.out.println("Вы выбрали таблицу Пользователи: введите username искомого поля таблицы\n");
+                                Scanner in9 = new Scanner(System.in);
+                                String usernames = in9.nextLine();
+                                boolean res4 = DBconnection.getInstance().searchUser(usernames);
+                                if(res4) System.out.println("Такое поле есть в таблице");
+                                else System.out.println("Не найдено");
 
                                 break;
                             case 2:
@@ -212,16 +216,18 @@ public class Main {
                         //-----
                         switch (choice2){
                             case 1:
-
-                                System.out.println("Таблица Пользователи:\n");
-
+                                System.out.println("Вы выбрали таблицу Пользователи: введите username удаяемого поля таблицы\n");
+                                Scanner in8 = new Scanner(System.in);
+                                String usernames = in8.nextLine();
+                                int res3 = DBconnection.getInstance().deleteUser(usernames);
+                                System.out.println(res3);
                                 break;
                             case 2:
-                                System.out.println("Таблица Аккаунты:\n");
+                                System.out.println("Вы выбрали таблицу Аккаунты: введите username удаяемого поля таблицы\n");
 
                                 break;
                             case 3:
-                                System.out.println("Таблица Авторизации:\n");
+                                System.out.println("Вы выбрали таблицу Авторизации: введите username удаяемого поля таблицы\n");
                                 break;
                             case 4: System.out.println("Вы выбрали выйти"); menu5 = false; break;
                             default:
